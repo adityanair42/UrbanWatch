@@ -8,7 +8,6 @@ import Navbar from '@/components/Navbar';
 import api from '@/lib/api';
 import { Category } from '@/types';
 
-// Load map only on client — Leaflet requires browser APIs
 const MapComponent = dynamic(() => import('@/components/MapComponent'), {
   ssr: false,
   loading: () => (
@@ -81,7 +80,6 @@ export default function MapPage() {
     <div className="flex flex-col h-screen overflow-hidden bg-gray-50">
       <Navbar />
 
-      {/* Sub-header with category info */}
       <div className="bg-white border-b border-gray-200 px-5 py-2.5 flex items-center gap-3 flex-shrink-0">
         <button
           onClick={() => router.push('/dashboard')}
@@ -105,7 +103,6 @@ export default function MapPage() {
         </div>
       </div>
 
-      {/* Map fills the remaining space */}
       <div className="flex-1 min-h-0">
         <MapComponent
           categoryId={categoryId}

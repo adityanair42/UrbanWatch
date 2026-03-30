@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between sticky top-0 z-40">
       <Link href="/dashboard" className="flex items-center gap-2 text-xl font-bold text-gray-900 hover:text-blue-600 transition">
-        🗺️ CivicMap
+        🗺️ Urban Watch
       </Link>
       {user && (
         <div className="flex items-center gap-4">

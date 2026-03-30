@@ -8,9 +8,11 @@ import { Marker as MarkerType } from '@/types';
 import { useAuth } from '@/context/AuthContext';
 import api from '@/lib/api';
 
-// Fix Leaflet's broken default icon in webpack/Next.js
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-delete (L.Icon.Default.prototype as any)._getIconUrl;
+type LeafletDefaultIconPrototype = typeof L.Icon.Default.prototype & {
+  _getIconUrl?: string;
+};
+
+delete (L.Icon.Default.prototype as LeafletDefaultIconPrototype)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
   iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png',
@@ -76,7 +78,6 @@ export default function MapComponent({ categoryId, categoryName, categoryColor }
       const res = await api.get(`/markers?categoryId=${categoryId}`);
       setMarkers(res.data);
     } catch {
-      // silently fail — map still usable
     }
   }, [categoryId]);
 
@@ -163,7 +164,6 @@ export default function MapComponent({ categoryId, categoryName, categoryColor }
                 {marker.images.length > 0 && (
                   <div className="mt-2 grid grid-cols-2 gap-1">
                     {marker.images.map((img, i) => (
-                      // eslint-disable-next-line @next/next/no-img-element
                       <img
                         key={i}
                         src={`${backendUrl}/uploads/${img}`}
@@ -188,7 +188,6 @@ export default function MapComponent({ categoryId, categoryName, categoryColor }
         ))}
       </MapContainer>
 
-      {/* Add Marker Modal — rendered on top of the map */}
       {pending && (
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-[1000] p-4">
           <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl">

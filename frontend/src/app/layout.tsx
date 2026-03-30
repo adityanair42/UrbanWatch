@@ -3,7 +3,7 @@ import './globals.css';
 import { AuthProvider } from '@/context/AuthContext';
 
 export const metadata: Metadata = {
-  title: 'CivicMap — Community Issue Reporting',
+  title: 'Urban Warch - Community Issue Reporting',
   description: 'Report and track civic issues in your community',
 };
 

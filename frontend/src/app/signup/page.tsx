@@ -38,7 +38,7 @@ export default function SignupPage() {
       <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
         <div className="text-center mb-8">
           <div className="text-5xl mb-3">🗺️</div>
-          <h1 className="text-2xl font-bold text-gray-900">CivicMap</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Urban Watch</h1>
           <p className="text-gray-500 mt-1 text-sm">Create your account</p>
         </div>
 
